@@ -1,122 +1,119 @@
-<php
-class product {
-    public $name;
-    public $price;
-    public $discount;
+<?php
+    class product {
+        //properties
+        public $name;
+        public $price;
+        public $discount;
+    
+        //methods
+        function setName($name) {
+            $this->name = $name;
+        }
+        function getName() {
+            return $this->name;
+        }
 
-    function getPrice(){
-        return $this->price;
-    }
-    function setPrice($price){
-        $this->price = $price;
-    }
-    function getName(){
-        return $this->name ;
-    }
-    function setName($name){
-        $this->name = $name;
-    }
-    function getDiscount(){
-        return $this->discount;
-    }
-    function setDiscount($discount){
-        $this->discount = $discount;
-    }
-}
+        function setPrice($price) {
+            $this->price = $price;
+        }
+        function getPrice() {
+            return $this->price;
+        }
 
-class CDMusic extends product
-{
-    public $artist;
-    public $genre;
-
-    function __construct($name="nama", $price="harga", $discount="diskon"){
-
+        function setDiscount($discount) {
+            $this->discount = $discount;
+        }
+        function getDiscount() {
+            return $this->discount;
+        }
     }
 
-    function getArtist(){
-        return $this->artist;
-    }
-    function setArtist($artist){
-        $this->artist = $artist;
-    }
-    function getGenre(){
-        return $this->genre;
-    }
-    function setGenre($genre){
-        $this->genre = $genre;
-    }
-    function setPrice($price){
-        $this->price = $price;
-    }
-    function getPrice(){
-        $harga = $this->price;
-        $ppn = ((10/100) * $this->price);
-        $discount = ((5/100) * $this->price);
-        return ($harga + $ppn) - $discount;
-    }
-    function setDiscount($discount){
-        $this->discount = $discount;
-    }
-}
 
-class CDRack extends product
-{
-    public $capacity;
-    public $model;
+    class CDMusic {
+        //properties
+        public $artist;
+        public $genre;
+        
+        //methods
+        function __construct($name = "nama", $price = "harga", $discount = "diskon") {
+        }
+        function setArtist($artist) {
+            $this->artist = $artist;
+        }
+        function getArtist() {
+            return $this->artist;
+        }
 
-    function getCapacity(){
-        return $this->capacity;
+        function setGenre($genre) {
+            $this->genre = $genre;
+        }
+        function getGenre() {
+            return $this->genre;
+        }
+        function setPrice($price) {
+            $this->price = $price;
+        }
+        function getPrice() {
+            $harga = $this->price;
+            $ppn = ($this->price*(10/100));
+            $discount = ($this->price*(5/100));
+            return($harga + $ppn) - $discount;
+        }
+        function setDiscount($discount) {
+            $this->discount = $discount;
+        }
     }
-    function setCapacity($capacity){
-        $this->capacity = $capacity;
+
+
+    class CDRack {
+        //properties
+        public $capacity;
+        public $model;
+
+        //methods
+        function setCapacity($capacity) {
+            $this->capacity = $capacity;
+        }
+        function getCapacity() {
+            return $this->capacity;
+        }
+        function setModel($model) {
+            $this->model = $model;
+        }
+        function getModel() {
+            return $this->model;
+        }
+        function getPrice() {
+            $harga = $this->price;
+            $ppn2 = ($this->price*(15/100));
+            return($harga + $ppn2);
+        }
     }
-    function getModel(){
-        return $this->model;
-    }
-    function setModel($model){
-        $this->model = $model;
-    }
-    function setPrice($price){
-        $this-> = $price;
-    }
-    function getPrice(){
-        $harga = $this->price;
-        $tambahan = ((15/100) * $this->price);
-        return $harga + $tambahan;
-    }
-}
-$beli = new product();
-$beli_cdm = new CDMusic();
-$beli_cdr = new CDRack();
 
-$beli->setName("CDlagu");
-$beli->setPrice(200000);
-$beli->setDiscount("Discount saat ini : 1. CDMusic = 5% <br/>
-                                        2. CDRack = 0% (Tidak ada discount)");
-echo "Nama Product : " .$beli->getName(). "<br/>";
-echo "Harga : Rp. ".$beli->getPrice(). ",-<br/>";
-echo $beli->getDiscount(). "<br/><hr/>";
+    $buy = new product();
+    $buy_cdm = new CDMusic();
+    $buy_cdr = new CDRack();
 
-$beli_cdm->setArtist("One Direction");
-$beli_cdm->setGenre("Pop");
-$beli_cdm->setDiscount("5%");
-$beli_cdm->setPrice(200000);
+    $buy->setName("Her");
+    $buy->setPrice(250000);
+    $buy->setDiscount("Discount : <br> > CDMusic = 15% <br> > CDRack = Tidak ada diskon");
+    
+    echo "Album : ".$buy->getName();
+    echo "<br>";
+    echo "Harga : ".$buy->getPrice();
+    echo "<br>";
+    echo $buy->getDiscount();
+    echo "<br><hr>";
 
-echo "---SELAMAT DATANG DI CDMUSIC--- <br/>";
-echo "Nama Product : ".$beli->getName(). "<br/>";
-echo "Artis : ".$beli_cdm->getArtis(). "<br/>";
-echo "Genre : ".$beli_cdm->getGenre(). "<br/>";
-echo "Selamat Anda mendapatkan Discount Sebesar ".$beli_cdm->getDiscount(). "<br/>";
-echo "Total Harga : Rp.".$beli_cdm->getPrice(). ",-<br/>Harga diatas sudah termasuk PPN sebesar 10% dan Discount 5%<br/><br/><hr/>";
+    $buy_cdm->setArtist("DREAM PERFECT REGIME");
+    $buy_cdm->setGenre("HIP HOP");
+    $buy_cdm->setPrice(250000);
+    $buy_cdm->setDiscount("5%");
 
-$beli_cdr->setCapacity("600mb");
-$beli_cdr->setModel("Keluaran terbaru album pertama");
-$beli_cdr->setPrice(200000);
-
-echo "---SELAMAT DATANG DI CDRACK--- <br/>";
-echo "Kapasitas : ".$beli_cdr->getCapacity(). "<br/>";
-echo "Model : ".$beli_cdr->getModel(). "<br/>";
-echo "Mohon maaf anda tidak mendapatkan Discount <br/>";
-echo "Total Harga : Rp.".$beli_cdr->getPrice(). ",-<br/>Harga diatas sudah termasuk PPN sebesar 15% dan tidak mendapatkan discount";
-
+    echo "Selamat pagi, berikut adalah rincian pembelian CDMusic anda : <br>";
+    echo "Album : ".$buy->getName()."<br>";
+    echo "Artist : ".$buy_cdm->getArtist()."<br>";
+    echo "Genre : ".$buy_cdm->getGenre()."<br>";
+    echo "Total Harga : Rp".$buy_cdm->getPrice()."<br>";
+    echo "Total harga diatas sudah termasuk PPN 10% dan discount 5%";
 ?>
